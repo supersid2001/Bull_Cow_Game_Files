@@ -21,8 +21,6 @@ void UBullCowCartridge::OnInput(const FString &Input) // When the player hits en
     /* If game is over, clear screen and setup game again
     Else check player guess */
     ProcessGuess(Input);
-    FBullCowCount Count = GetBullCows(Input);
-    PrintLine(TEXT("You have %i bulls and %i cows"), Count.Bulls, Count.Cows);
 }
 
 void UBullCowCartridge::SetupGame()
@@ -32,7 +30,8 @@ void UBullCowCartridge::SetupGame()
     PrintLine(TEXT("Hello there!"));
     PrintLine(TEXT("Type in your guess. You have %i lives"), Lives);
     PrintLine(TEXT("Press enter to continue."));
-    PrintLine(FString::Printf(TEXT("The hidden word is %s\nit is %i characters long"), *HiddenWord, HiddenWord.Len())); //Debug Line
+    //Debug Line
+    //PrintLine(FString::Printf(TEXT("The hidden word is %s\nit is %i characters long"), *HiddenWord, HiddenWord.Len())); //Debug Line
     //Prompt for guess
     PrintLine(FString::Printf(TEXT("Guess the %i letter word"), HiddenWord.Len()));
     bGameOver = false;
@@ -70,6 +69,8 @@ void UBullCowCartridge::ProcessGuess(const FString &Guess)
     if (Lives > 1)
     {
         Lives--;
+        FBullCowCount Count = GetBullCows(Guess);
+        PrintLine(TEXT("You have %i bulls and %i cows"), Count.Bulls, Count.Cows);
         PrintLine(TEXT("Incorrect! You have %i lives"), Lives);
         return;
     }
