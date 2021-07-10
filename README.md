@@ -11,3 +11,6 @@ is to guess the isogram before running out of lives!
 
 Controls: 
 TAB : To access the terminal and start typing in guesses. 
+
+
+Made with the assistance of the following Udemy course : https://www.udemy.com/course/unrealcourse/
